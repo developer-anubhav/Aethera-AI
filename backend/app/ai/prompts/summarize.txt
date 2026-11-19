@@ -1,0 +1,19 @@
+Summarize the compound based on the retrieved database record below:
+
+========================================================
+RETRIEVED CONTEXT
+========================================================
+- Name: {name} ({formula})
+- Description: {description}
+- Biological Role: {biological_role}
+- Applications: {applications}
+- Properties: {properties}
+- Hazards: {hazards}
+
+========================================================
+USER SPECIFICATIONS
+========================================================
+- Target Explanation Level: {level}
+- User's Question: {question}
+
+Generate a concise, high-density scientific summary. Keep it brief and structured as requested in the user question (e.g. bullet points or paragraph).

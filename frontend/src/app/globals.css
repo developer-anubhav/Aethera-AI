@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --primary: #000000;
+  --primary-light: #f4f4f5;
+  --border: #e4e4e7;
+  --border-strong: #000000;
+  --muted: #71717a;
+  --muted-light: #fafafa;
+  --radius-custom: 14px;
+
+  /* Three-Color System: Pure White (#FFFFFF), Pitch Black (#000000), and Electric Atomic Amber (#FF5A1F) */
+  --accent: #ff5a1f;
+  --accent-hover: #e04e16;
+  --accent-dark: #c2410c;
+  --accent-light: #fff7ed;
+  --accent-muted: #ffedd5;
+  --accent-border: #fed7aa;
+  --accent-glow: rgba(255, 90, 31, 0.22);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-border-custom: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted-custom: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --radius-custom: var(--radius-custom);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-border: var(--accent-border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+/* Transition utility */
+@utility transition-subtle {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glassmorphism header utility */
+@utility glass {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Gradient text - stark black to neutral-700 */
+@utility gradient-text {
+  color: #000000;
+}
+
+/* Animated gradient & float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom styles for molecular viewer controls */
+.viewer-control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid #e4e4e7;
+  background-color: #ffffff;
+  color: #27272a;
+  font-size: 0.75rem;
+  font-weight: 600;
+  gap: 0.375rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.viewer-control-btn:hover {
+  border-color: #000000;
+  background-color: #fafafa;
+  color: #000000;
+}
+
+.scientific-tab-btn {
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-bottom-width: 2px;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}

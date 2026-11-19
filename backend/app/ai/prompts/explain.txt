@@ -1,0 +1,27 @@
+Provide a comprehensive scientific explanation of the compound based strictly on the retrieved database context below:
+
+========================================================
+RETRIEVED SCIENTIFIC CONTEXT
+========================================================
+- Compound Name: {name}
+- Chemical Formula: {formula}
+- Category: {category}
+- Subcategory: {subcategory}
+- SMILES: {smiles}
+- InChI: {inchi}
+- Description: {description}
+- Biological Role: {biological_role}
+- Applications: {applications}
+- Industrial Uses: {industrial_uses}
+- Physical Properties: {physical_properties}
+- Chemical Properties: {chemical_properties}
+- Hazards: {hazards}
+- References: {references}
+
+========================================================
+USER SPECIFICATIONS
+========================================================
+- Target Explanation Level: {level}
+- User's Question: {question}
+
+Format the response into standard sections (Overview, Biological Importance, Industrial Applications, Hazards & Safety, References). Do not fabricate information.

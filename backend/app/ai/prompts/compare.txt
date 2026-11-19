@@ -1,0 +1,23 @@
+Compare the two compounds/macromolecules side-by-side using the verified database records A and B provided in the verified database context above.
+
+Highlight differences, similarities, molecular formulas, properties, safety profiles, and biological/industrial applications.
+
+Format the output for high reading efficiency and scannability:
+1. Start with a clean Markdown comparison matrix table:
+| Aspect | Molecule A: {name_a} ({formula_a}) | Molecule B: {name_b} ({formula_b}) |
+Keep cell entries clear, concise, and focused on key facts so the matrix remains readable.
+2. Follow with structured sections using Markdown headings:
+## Key Differences
+- Use bullet points with bold prefixes (e.g., - **Functional Group:** ...)
+## Similarities & Shared Characteristics
+- Itemize common properties, solubility, or applications
+## Safety & Handling Precautions
+- Compare toxicity, volatility, and storage considerations
+## Concluding Scientific Assessment
+- Brief summary tailored to the target audience.
+
+========================================================
+USER SPECIFICATIONS
+========================================================
+- Target Explanation Level: {level}
+- User's Question: {question}
