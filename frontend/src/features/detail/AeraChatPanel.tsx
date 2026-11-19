@@ -28,7 +28,8 @@ export default function AeraChatPanel({ compound }: AeraChatPanelProps) {
   const [mode, setMode] = useState<StudyMode>("explain");
   const [compareWithSlug, setCompareWithSlug] = useState<string>("");
   const [isExpandedView, setIsExpandedView] = useState<boolean>(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const isNearBottomRef = useRef<boolean>(true);
 
   // Fetch other compounds for comparison select box
   const { data: compoundsList } = useQuery<Compound[]>({
@@ -38,13 +39,30 @@ export default function AeraChatPanel({ compound }: AeraChatPanelProps) {
 
   const otherCompounds = compoundsList?.filter((c) => c.slug !== compound.slug) || [];
 
-  // Scroll to bottom when messages change
+  // Track if the user has manually scrolled up to read history
+  const handleScroll = () => {
+    const container = chatContainerRef.current;
+    if (!container) return;
+    const threshold = 120;
+    const isNear = container.scrollHeight - container.scrollTop - container.clientHeight <= threshold;
+    isNearBottomRef.current = isNear;
+  };
+
+  // Scroll ONLY the internal chat container (never the page window) during streaming
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const container = chatContainerRef.current;
+    if (!container) return;
+
+    if (isNearBottomRef.current) {
+      // Instant direct assignment confined strictly inside the container
+      container.scrollTop = container.scrollHeight;
+    }
   }, [messages]);
 
   const executeSend = async (questionText: string) => {
     if (!questionText.trim() || isStreaming) return;
+
+    isNearBottomRef.current = true;
 
     // Create user message
     const userMessage: ChatMessage = { role: "user", content: questionText };
@@ -261,7 +279,9 @@ export default function AeraChatPanel({ compound }: AeraChatPanelProps) {
 
       {/* Message Chat Logs Area with dynamic reading height */}
       <div
-        className={`overflow-y-auto pr-2 flex flex-col gap-5 border border-neutral-200/90 bg-neutral-50/50 rounded-2xl p-4 sm:p-5 transition-all duration-300 ${
+        ref={chatContainerRef}
+        onScroll={handleScroll}
+        className={`overflow-y-auto overscroll-contain pr-2 flex flex-col gap-5 border border-neutral-200/90 bg-neutral-50/50 rounded-2xl p-4 sm:p-5 transition-[max-height,min-height] duration-300 ease-in-out ${
           isExpandedView ? "min-h-[520px] max-h-[820px]" : "min-h-[380px] max-h-[580px]"
         }`}
       >
@@ -396,7 +416,6 @@ export default function AeraChatPanel({ compound }: AeraChatPanelProps) {
             </div>
           ))
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Message Input Form */}
