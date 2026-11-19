@@ -1,9 +1,17 @@
 import asyncio
 import logging
 from typing import AsyncGenerator, List, Optional
-from google import genai
-from google.genai import types
-from google.genai.errors import APIError
+
+try:
+    from google import genai
+    from google.genai import types
+    from google.genai.errors import APIError
+    HAS_GENAI = True
+except ImportError:
+    HAS_GENAI = False
+    genai = None
+    types = None
+    APIError = Exception
 
 from app.core.config import get_gemini_credentials
 from app.ai.base_client import BaseLLMClient
@@ -25,6 +33,12 @@ class GeminiClient(BaseLLMClient):
         # Dynamically load credentials to immediately reflect any changes in .env
         self.provider_name = "gemini"
         self.api_key, self.model_name = get_gemini_credentials()
+
+        if not HAS_GENAI:
+            logger.warning("google-genai package not installed; GeminiClient in fallback mode.")
+            self.client_active = False
+            self.client = None
+            return
 
         if self.api_key:
             try:
