@@ -91,6 +91,11 @@ def migrate_live(source_db: str, postgres_url: str):
     """
     Directly streams data from SQLite into the target PostgreSQL instance.
     """
+    if postgres_url.startswith("postgres://"):
+        postgres_url = postgres_url.replace("postgres://", "postgresql+psycopg2://", 1)
+    elif postgres_url.startswith("postgresql://") and not postgres_url.startswith("postgresql+psycopg2://"):
+        postgres_url = postgres_url.replace("postgresql://", "postgresql+psycopg2://", 1)
+
     logger.info(f"Starting live migration: SQLite ({source_db}) -> PostgreSQL...")
     src_con = get_sqlite_connection(source_db)
     src_cur = src_con.cursor()
