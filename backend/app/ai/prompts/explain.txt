@@ -1,27 +1,10 @@
-Provide a comprehensive scientific explanation of the compound based strictly on the retrieved database context below:
+Task: Provide an authoritative, educational scientific explanation.
 
-========================================================
-RETRIEVED SCIENTIFIC CONTEXT
-========================================================
-- Compound Name: {name}
-- Chemical Formula: {formula}
-- Category: {category}
-- Subcategory: {subcategory}
-- SMILES: {smiles}
-- InChI: {inchi}
-- Description: {description}
-- Biological Role: {biological_role}
-- Applications: {applications}
-- Industrial Uses: {industrial_uses}
-- Physical Properties: {physical_properties}
-- Chemical Properties: {chemical_properties}
-- Hazards: {hazards}
-- References: {references}
+Target Compound: {name} ({formula})
+Target Explanation Level: {level}
+User's Question: {question}
 
-========================================================
-USER SPECIFICATIONS
-========================================================
-- Target Explanation Level: {level}
-- User's Question: {question}
-
-Format the response into standard sections (Overview, Biological Importance, Industrial Applications, Hazards & Safety, References). Do not fabricate information.
+Instructions:
+1. Grounding: If the question pertains to {name}, ground your explanation in the verified database context (structure, physical/chemical properties, pharmacology, hazards, and literature) provided above.
+2. Scientific Breadth: If the user asks about related biochemical mechanisms, reagents, solvents (e.g. water, alcohols), or general molecular science concepts, provide a clear, accurate, and comprehensive explanation using sound scientific principles, relating back to {name} where appropriate.
+3. Structure: Present your explanation with clear Markdown headings (##, ###), bullet points, and chemical notations/equations.

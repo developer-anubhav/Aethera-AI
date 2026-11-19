@@ -77,18 +77,6 @@ def build_aera_prompt(
             prompt_str += task_tpl.format(
                 name=compound_name,
                 formula=compound_formula,
-                category="", 
-                subcategory="",
-                smiles="",
-                inchi="",
-                description="",
-                biological_role="",
-                applications="",
-                industrial_uses="",
-                physical_properties="",
-                chemical_properties="",
-                hazards="",
-                references="",
                 level=level,
                 question=question
             )

@@ -1,19 +1,9 @@
-Summarize the compound based on the retrieved database record below:
+Task: Provide a concise, high-density scientific summary.
 
-========================================================
-RETRIEVED CONTEXT
-========================================================
-- Name: {name} ({formula})
-- Description: {description}
-- Biological Role: {biological_role}
-- Applications: {applications}
-- Properties: {properties}
-- Hazards: {hazards}
+Target Compound: {name} ({formula})
+Target Explanation Level: {level}
+User's Question: {question}
 
-========================================================
-USER SPECIFICATIONS
-========================================================
-- Target Explanation Level: {level}
-- User's Question: {question}
-
-Generate a concise, high-density scientific summary. Keep it brief and structured as requested in the user question (e.g. bullet points or paragraph).
+Instructions:
+1. Grounding: Summarize the compound's critical properties, biological significance, applications, and safety profile based on the verified database context above.
+2. Structure: Present the summary cleanly using structured bullet points or concise paragraphs as requested.
